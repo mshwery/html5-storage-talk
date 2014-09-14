@@ -1,0 +1,77 @@
+/**
+ * Custom theme for reveal.js.
+ * Author: Matt Shwery
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+
+// Include theme-specific fonts
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700,400italic);
+
+// Override theme settings (see ../template/settings.scss)
+$mainFont: 'Lato', sans-serif;
+$mainColor: #4681CF;
+$headingFont: 'Lato', sans-serif;
+$headingColor: #4681CF;
+$headingLetterSpacing: normal;
+$headingTextShadow: none;
+$heading1TextShadow: $headingTextShadow;
+$headingLineHeight: 1.1em;
+$backgroundColor: #fff;
+$linkColor: #4681CF;
+$linkColorHover: lighten( $linkColor, 20% );
+$selectionBackgroundColor: #134674;
+
+// Fix links so they are not cut off
+.reveal a:not(.image) {
+  line-height: 1.3em;
+}
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+.reveal h1,
+.reveal h2 {
+  font-weight: 200;
+}
+
+.reveal h3, h4 {
+  font-weight: 300;
+}
+
+.reveal .dark {
+  color: $backgroundColor !important;
+
+  h1, h2, h3, h4, h5, h6, p, span, a {
+    color: $backgroundColor;
+  }
+}
+
+.reveal .slides {
+  text-align: left;
+
+  .center {
+    text-align: center;
+  }
+}
+
+.reveal li {
+  line-height: 1.1em;
+  margin-top: 1em;
+
+  a {
+    border-bottom: 1px solid currentColor;
+  }
+}
+
+.reveal section img {
+  border: none;
+  box-shadow: none;
+}

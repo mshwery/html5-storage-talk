@@ -4,9 +4,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Reusable D3.js</title>
+    <title>Dual Storage with HTML5</title>
 
-    <meta name="description" content="Reusable D3.js">
+    <meta name="description" content="Explore persistant storage in the browser.">
     <meta name="author" content="Matt Shwery">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" href="css/reveal.min.css">
     <link rel="stylesheet" href="css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="css/custom.css">
 
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -75,168 +76,147 @@
 
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
-        <section>
-          <h1>Reusable D3</h1>
-          <p>
-            <small><a href="http://mattshwery.com">Matt Shwery</a> / <a href="http://twitter.com/mshwery">@mshwery</a></small>
-          </p>
+
+        <section class="dark center" data-background="#4681CF">
+          <h1 class="talk-title">Web Storage in HTML5</h1>
+        </section>
+
+        <section class="full-size center" data-background="img/me.jpg">
+          <div class="right-column">
+            <h3><a href="http://mattshwery.com">Matt Shwery</a></h3>
+            <a href="http://twitter.com/mshwery">@mshwery</a>
+          </div>        
+        </section>
+
+        <section class="center">
+          <img src="img/logo-fed.svg"><br/><br/>
+          <img src="img/logo-fulcrum-horizontal.svg">
 
           <aside class="notes">
             <ul>
               <li>Frontend @ Fed</li>
               <li>Software for Market Research + the Sample industry</li>
             </ul>
-          </aside>
+          </aside>            
         </section>
 
-        <section>
-          <h2>What is D3.js?</h2>     
-        </section>
-
-        <section>
-          <p>a charting libary</p>
-        </section>
-
-        <section>
-          <p>not exactly</p>
-        </section>
-
-        <section>
-          <h2>What it isn't</h2>
+        <section class="full-size dark" data-background="#4681CF">
+          <h2>What's this all about?</h2>
           <ul>
-            <li>
-              <b>not</b> a plotting tool
-            </li>
-            <li>
-              <b>not</b> a drawing tool
-              <ul>
-                <li><b>not</b> canvas</li>
-                <li><b>not</b> raphael</li>
-              </ul>
-            </li>
+            <li>Learn different ways to persist data on client-side</li>
+            <li>Benefits of Offline-first</li>
+            <li>Current landscape of web storage</li>
+            <li>Handling remote and local data stores</li>
+            <li>The future?</li>
           </ul>
+
           <aside class="notes">
             <ul>
-              <li>Mauer caught me speaking wrong about this earlier</li>
-              <li>I was thinking svg was canvas</li>
+              <li>more sophisticated ways to persist data in the browser</li>
             </ul>
           </aside>
         </section>
 
-        <section>
-          <h2>What it is</h2>
-          <p>A tool for mapping data to DOM</p>
+        <section class="full-size dark" data-background="#4681CF">
+          <h2>Why web storage?</h2>
         </section>
 
-        <section>
-          <h2>What it is</h2>
-          <p>A tool for mapping <b><u>data</u></b> to <b><u>DOM</u></b></p>
+        <section class="full-size center">
+          <img src="img/arc.png">
+        </section>
+
+        <section class="full-size" data-background="img/loading1.gif">
+        </section>
+        
+        <section class="full-size" data-background="img/no-no-no.gif">
+        </section>
+        
+        <section class="full-size" data-background="img/infinity-spinner.gif">
+        </section>
+
+        <section class="center">
+          <img src="img/no-connection-error.png">
+        </section>        
+
+        <section class="center">
+          <img src="img/retry-connection.png">
+        </section>
+
+        <section class="full-size dark" data-background="#4681CF">
+          <h2>Why web storage?</h2>
+          <ul>
+            <li>Performance</li>
+            <li>Store client-specific data</li>
+            <li>Make it work offline</li>
+          </ul>
+        </section>
+
+        <section class="full-size offline-first">
+          <img src="img/turn-off-light-switch.jpg">
+          <h2>Offline-first, you say?</h2>
+          <ul>
+            <li>
+              <a href="http://alistapart.com/article/offline-first">A List Apart on Offline-first</a>
+              <br/>
+              <small>http://alistapart.com/article/offline-first</small>
+            </li>
+            <li>
+              <a href="http://offlinefirst.org/">Offline First is the new Mobile First</a>
+              <br/>
+              <small>http://offlinefirst.org/</small>
+            </li>
+            <li>Caching gives you speed</li>
+            <li>Disconnections aren't a problem</li>
+            <li>Don't treat offline like an error</li>
+            <li>It just works&#0153;</li>
+          </ul>
+        </section>
+
+        <section class="full-size dark" data-background="#4681CF">
+          <h2>What's the current landscape?</h2>
+          <ul>
+            <li>Cookies</li>
+            <li>Web SQL (deprecated)</li>
+            <li>IndexedDB</li>
+            <li>
+              Web Storage
+              <ul>
+                <li>localStorage</li>
+                <li>sessionStorage</li>
+              </ul>
+            </li>
+          </ul>
+
           <aside class="notes">
-            by far most prevalent and powerful tool for manipulating the DOM with data</li>
+            <ul>
+              <li>grouped under the umbrella phrase "Offline Technologies"</li>              
+              <li>tied to the document origin</li>
+            </ul>
           </aside>
         </section>
 
-        <section>
-        <p><a href="http://www.samplicio.us/fulcrum/leverage/monitor">@Fed</a></p>
-          <p><a href="http://www.nytimes.com/interactive/2011/05/31/business/economy/case-shiller-index.html">NY Times 1</a></p>
-          <p><a href="http://www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html">NY Times 2</a></p>
-        </section>
-
-        <section>
+        <section class="full-size cookies">
+          <img src="img/cookie-monster.gif">
+          <h3>Cookies</h3>  
           <ul>
-            <li>focused on DOM manipulation & selection</li>
-            <li>can use SVG or plain old DOM elements</li>
-            <li>doesn't provide any guidelines on reusability or structure</li>
-          </ul>
+            <li>Old school</li>
+            <li>Works everywhere</li>
+            <li>
+              Limited storage<br/>
+              <small>4kb per cookie, up to 128kb worth of cookies per domain</small>
+            </li>
+            <li>Useful for small, one-off, unique pieces of data</li>
+          </ul>          
         </section>
 
-        <section>
-          <h2>"Simple" Pie Chart</h2>
-          <img src="/img/simple-pie.png">
-          <aside class="notes">
-            lotta stuff going on to get set up
-          </aside>
-        </section>
-
-        <section>
-          <h2>Pie Chart</h2>
-          <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-var donut = new Donut({
-  bindTo: '#example-1',
-  offset: 1
-});
-
-donut.data([1, 2, 3]);
-        </code></pre>
-        </section>
-        <section id="example-1">
-          <h2>Example 1</h2>
-        </section>
-
-        <section>
-          <h2>Example 2</h2>
-          <pre><code>
-var donut = new Donut({
-  bindTo: '#example-2',
-  thickness: 30,
-  offset: 2,
-  startAngle: -65,
-  endAngle: 65
-});            
-          </code></pre>
-        </section>
-
-        <section id="example-2">
-          <h2>Example 2</h2>
-        </section>
-
-        <section>
-          <h2>Example 3</h2>
-          <pre><code>
-var donut = new Donut({
-  bindTo: '#example-3',
-  background: true,
-  maxValue: 60,
-  thickness: 2
-});
-
-setInterval(function() {
-  var date = new Date().getSeconds();
-  donut.data(date);
-}, 1000);            
-          </code></pre>
-        </section>
-
-        <section id="example-3">
-          <h2>Example 3</h2>
-        </section>
-
-        <section>
-          <h2>Existing Projects Like This</h2>
-          <ul>
-            <li><a href="http://c3js.org">C3.js</a></li>
-            <li><a href="http://nvd3.org">NVD3</a></li>
-            <li><a href="http://misoproject.com/d3-chart/">d3.chart</a></li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>Related Concepts</h2>
-          <ul>
-            <li><a href="http://jtuulos.github.io/bayd3-may2013">Backbone married to D3.js</a></li>
-            <li><a href="https://github.com/lebek/d3-tutorials.git">Polymer/Web Components + D3.js</a></li>
-          </ul>
-        </section>
-
-        <section>
-          <p>plug</p>
-          <p>@gnocode in June to elaborate on this topic</p>
+        <section class="full-size dark cookies" data-background="#4681CF">
+          <h3>Web SQL (deprecated)</h3>
 
         </section>
 
-        <section>
-          <h1>THE END</h1>
-          <h3>@mshwery</h3>
+        <section class="full-size dark" data-background="#4681CF">
+          <h1>Thanks! Questions?</h1>
+          <h4>Twitter/Github: @mshwery</h4>
         </section>
 
       </div>
@@ -256,7 +236,7 @@ setInterval(function() {
         history: true,
         center: true,
 
-        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        theme: Reveal.getQueryHash().theme || 'custom', // available themes are in /css/theme
         transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
 
         // Parallax scrolling
@@ -274,70 +254,6 @@ setInterval(function() {
         ]
       });
 
-    </script>
-
-    <script src="js/d3.min.js"></script>
-    <script src="js/donut.js"></script>
-    <script>
-      (function() {
-        var data = [1, 2, 3];
-
-        var donut = new Donut({
-          bindTo: '#example-1',
-          offset: 1
-        });
-
-        donut.load({data: data});
-
-        setInterval(function() {
-          data.forEach(function(d, i) {
-            data[i] = parseInt(Math.random() * 10);
-          })
-
-          donut.load({data: data});
-        }, 2500);
-      })();
-
-      (function() {
-        var data = [1];
-
-        var donut = new Donut({
-          bindTo: '#example-2',
-          thickness: 30,
-          offset: 2,
-          startAngle: -100,
-          endAngle: 100
-        });
-
-        donut.load({data: data});
-
-        setInterval(function() {
-          var i = Math.round(Math.random() * 10),
-            number = Math.round(Math.random() * 5) || 1;
-
-          if (data[i]) {
-            data[i] = number;
-          } else {
-            data.push(number);
-          }
-
-          donut.load({data: data});
-        }, 2500);
-      })();
-
-      (function() {
-        var donut = new Donut({
-          bindTo: '#example-3',
-          thickness: 2,
-          background: true,
-          maxValue: 60
-        });
-
-        setInterval(function() {
-          var date = new Date().getSeconds();
-          donut.load({ data: date });
-        }, 1000); 
-      })();
     </script>
   </body>
 </html>
