@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="267px" height="131px" viewBox="0 0 267 131" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.0.4 (8053) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Artboard-1" sketch:type="MSArtboardGroup" font-size="20" font-family="Lato" font-weight="normal">
+            <g id="https://example.com-+-http://example.com-+-http://app.example.c" sketch:type="MSLayerGroup" transform="translate(28.000000, 9.000000)">
+                <text id="https://example.com" sketch:type="MSTextLayer">
+                    <tspan x="0" y="20" fill="#4681CF">https</tspan>
+                    <tspan x="44.69" y="20" fill="#C6C9CC">://</tspan>
+                    <tspan x="67.77" y="20" fill="#4681CF">example.com</tspan>
+                </text>
+                <text id="http://example.com" sketch:type="MSTextLayer">
+                    <tspan x="0" y="50" fill="#4681CF">http</tspan>
+                    <tspan x="36.03" y="50" fill="#C6C9CC">://</tspan>
+                    <tspan x="59.11" y="50" fill="#4681CF">example.com</tspan>
+                </text>
+                <text id="http://app.example.c" sketch:type="MSTextLayer">
+                    <tspan x="0" y="80" fill="#4681CF">http</tspan>
+                    <tspan x="36.03" y="80" fill="#C6C9CC">://</tspan>
+                    <tspan x="59.11" y="80" fill="#4681CF">app.example.com</tspan>
+                </text>
+                <text id="http://example.com:8" sketch:type="MSTextLayer">
+                    <tspan x="0" y="110" fill="#4681CF">http</tspan>
+                    <tspan x="36.03" y="110" fill="#C6C9CC">://</tspan>
+                    <tspan x="59.11" y="110" fill="#4681CF">example.com:81</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -149,6 +149,26 @@
             <li>Store client-specific data</li>
             <li>Make it work offline</li>
           </ul>
+
+          <aside class="notes">
+            <ul>
+              <li>cache stuff</li>
+              <li>speed up your site</li>
+              <li>transfer less data across the wire</li>
+              <li>don't ask for what you already have</li>
+            </ul>
+            <ul>
+              <li>safety net</li>
+              <li>data redundancy</li>
+              <li>don't lose data when accidents happen</li>
+              <li>browser crash</li>
+              <li>closed window/tab</li>
+              <li>lost connection</li>
+            </ul>
+            <ul>
+              <li>store locally, sync remotely</li>
+            </ul>
+          </aside>
         </section>
 
         <section class="full-size offline-first">
@@ -170,6 +190,14 @@
             <li>Don't treat offline like an error</li>
             <li>It just works&#0153;</li>
           </ul>
+
+          <aside class="notes">
+            <ul>
+              <li>progressive enhancement</li>
+              <li>not a sure-fire solution unless you can enforce/expect browser usage</li>
+              <li></li>
+            </ul>
+          </aside>
         </section>
 
         <section class="full-size dark" data-background="#4681CF">
@@ -195,28 +223,355 @@
           </aside>
         </section>
 
+        <section class="full-size center">
+          <img src="img/document-origin.svg"><br/>
+          <img src="img/different-origins.svg">
+
+          <aside class="notes">
+            <ul>
+              <li>same-origin policy for security</li>
+              <li>can't access or conflict cross-origin</li>
+              <li>each of the following urls are different document origins</li>
+            </ul>
+          </aside>
+        </section>
+
         <section class="full-size cookies">
           <img src="img/cookie-monster.gif">
           <h3>Cookies</h3>  
           <ul>
-            <li>Old school</li>
             <li>Works everywhere</li>
             <li>
-              Limited storage<br/>
-              <small>4kb per cookie, up to 128kb worth of cookies per domain</small>
+              Limited storage
+              <br/>
+              <small>4kb per cookie, reliably up to 128kb in total cookies per domain</small>
             </li>
             <li>Useful for small, one-off, unique pieces of data</li>
+            <li>sent with every http request :(</li>
           </ul>          
         </section>
 
-        <section class="full-size dark cookies" data-background="#4681CF">
+        <section class="full-size dark" data-background="#4681CF">
           <h3>Web SQL (deprecated)</h3>
+          <ul>
+            <li>brings SQL to the browser</li>
+            <li>wide mobile support</li>
+            <li>
+              <code>"openDatabase" in window</code>
+            </li>
+            <li>
+              lack of consensus
+              <br>
+              <small>missing in IE and Firefox</small>
+            </li>
+            <li>still useful as fallback when indexedDB isn't supported</li>
+          </ul>
 
+          <aside class="notes">
+            <ul>
+              <li>late 2010, w3c dropped the spec in favor of indexedDB</li>
+              <li>IE and Firefox disagreed with implementation</li>
+              <li>tread carefully</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section class="center">
+          <img src="img/can-i-use-web-sql.jpg">
         </section>
 
         <section class="full-size dark" data-background="#4681CF">
-          <h1>Thanks! Questions?</h1>
-          <h4>Twitter/Github: @mshwery</h4>
+          <h3>IndexedDB</h3>
+          <ul>
+            <li>high performance search on records</li>
+            <li>uses "Object Stores"</li>
+            <li>
+              size limits
+              <br/>
+              <small>
+                <ul>
+                  <li>IE 10: 10MB user gets prompted, 250 MB hard limit</li>
+                  <li>Chrome: shared pool (up to 20% of pool, which is 50% of available disk space)</li>
+                </ul>
+              </small>
+            </li>
+            <li>shares concepts with an SQL db</li>
+          </ul>
+
+          <aside class="notes">
+            <ul>
+              <li>object stores == tables</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section class="full-size dark" data-background="#4681CF">
+          <h3>IndexedDB</h3>
+          <ul>
+            <li>databases with records with fields with a specific datatype defined upon creation</li>
+            <li>select and enumerate with a cursor</li>
+            <li>changes handled within transactions</li>
+            <li>indexes</li>
+            <li>
+              but no structured query language:
+              <small>
+                <p>
+                  no <code>SELECT * from USERS where NAME = 'Bob'</code>
+                </p>
+              </small>
+            </li>
+          </ul>
+
+          <aside class="notes">
+            <ul>
+              <li>cursors take `range`, `source`, `position`</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section class="full-size dark" data-background="#4681CF">
+          <h3>IndexedDB</h3>
+          <ul>
+            <li>
+              modern browser support (limited)
+              <ul>
+                <li>Safari/iOS Safari only 8+</li>
+                <li>sucks for mobile</li>
+              </ul>
+            </li>
+            <li>
+              <a href="http://nparashuram.com/IndexedDBShim/">IndexedDBShim</a>: polyfill/adapter for Web SQL as fallback
+              <small>http://nparashuram.com/IndexedDBShim/</small>
+            </li>
+          </ul>
+        </section>
+
+        <section class="center">
+          <img src="img/can-i-use-indexeddb.jpg">
+        </section>
+
+        <section class="full-size">
+          <pre><code>var request = indexedDB.open("library");
+
+request.onupgradeneeded = function() {
+  // The database did not previously exist, so create object stores and indexes.
+  var db = request.result;
+  var store = db.createObjectStore("books", {keyPath: "isbn"});
+  var titleIndex = store.createIndex("by_title", "title", {unique: true});
+  var authorIndex = store.createIndex("by_author", "author");
+
+  // Populate with initial data.
+  store.put({title: "Quarry Memories", author: "Fred", isbn: 123456});
+  store.put({title: "Water Buffaloes", author: "Fred", isbn: 234567});
+  store.put({title: "Bedrock Nights", author: "Barney", isbn: 345678});
+};
+
+request.onsuccess = function() {
+  db = request.result;
+};</code></pre>
+        </section>
+
+        <section class="full-size dark" data-background="#4681CF">
+          <h3>Web Storage</h3>
+          <ul>
+            <li>persistent key/value pairs</li>
+            <li>wide browser support</li>
+            <li>easiest to use</li>
+            <li>two flavors: localStorage & sessionStorage</li>
+          </ul>
+        </section>
+
+        <section class="center">
+          <img src="img/can-i-use-web-storage.jpg">
+        </section>
+
+        <section data-background="img/dancing-badger.gif">
+          <aside class="notes">
+            <p>Finally, good support!</p>
+          </aside>
+        </section>
+
+        <section class="full-size dark" data-background="#4681CF">
+          <h3>It's not all grand</h3>
+          <ul>
+            <li>only up to 5MB</li>
+            <li>
+              strings only
+              <small>
+                <p>parse as JSON in & out</p>
+              </small>
+            </li>
+            <li>QUOTA_EXCEEDED_ERR</li>
+            <li>no expiry/cache-busting out of the box</li>
+            <li>no TTL out of the box</li>
+            <li>no storage limit control</li>
+          </ul>
+
+          <aside class="notes">
+            <p>these are just precautions you'll have to take</p>
+          </aside>
+        </section>
+
+        <section class="full-size dark" data-background="#4681CF">
+          <h3>Web Storage:</h3>
+          <h4>localStorage</h4>
+          <ul>
+            <li>persists until cleared</li>
+            <li>
+              events across tabs/windows raised
+              <ul>
+                <li>only on key/value change</li>
+                <li>only in other open windows (not the current one)</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section class="full-size dark" data-background="#4681CF">
+          <h3>Web Storage:</h3>
+          <h4>sessionStorage</h4>
+          <ul>
+            <li>identical API as localStorage</li>
+            <li>
+              differs from localStorage in lifetime and scope
+              <small><p>
+                sessionStorage is restricted to the current tab/window lifetime
+              </p></small>
+            </li>
+          </ul>
+
+          <aside class="notes">
+            <ul>
+              <li>gets cleared when that tab/window closes, hence "session" storage</li>
+              <li>can navigate away and then go back and it will still be there</li>
+              <li>not available cross-tab/window</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section class="full-size">
+          <pre><code>// store some value in localStorage
+localStorage.setItem('foo', 'bar');
+
+// retrieve the value stored in `foo`
+localStorage.getItem('foo'); // outputs 'bar'
+
+localStorage['foo']; // outputs 'bar'</code></pre>
+        </section>
+
+        <section class="full-size">
+          <pre><code>// try to store an array
+var myArray = ['foo', 'bar'];
+
+localStorage.setItem('myArray', myArray);
+
+localStorage.getItem('myArray'); // outputs "foo,bar"
+</code></pre>
+        </section>
+
+        <section class="full-size">
+          <pre><code>// try to store an object
+var myObj = { foo: 'bar' };
+
+localStorage.setItem('myObj', myObj);
+
+localStorage.getItem('myObj'); // outputs "[object Object]"
+</code></pre>
+        </section>
+
+        <section class="full-size">
+          <pre><code>// set any value using JSON
+function setItem(key, value) {
+    if (!key) return null;
+    return localStorage.setItem(key, JSON.stringify(value));
+}
+
+// retrieve our JSON-stored value
+function getItem(key) {
+    if (!key) return undefined;
+
+    var value = localStorage.getItem(key);
+    return JSON.parse(value); 
+}
+
+var myArray = ['foo', 'bar'];
+
+setItem('myArray', myArray);
+getItem('myArray'); // outputs ["foo", "bar"]
+
+var myObj = { foo: 'bar' };
+
+setItem('myObj', myObj);
+getItem('myObj'); // outputs Object {foo: "bar"}
+</code></pre>
+        </section>
+
+        <section class="full-size">
+          <h2>The Future</h2>
+          <ul>
+            <li>
+              Abstractions & Wrapper Libs
+              <ul>
+                <li>
+                  <a href="https://gist.github.com/mshwery/abb46d8cd85a59e65bf8">store.js</a>
+                  <br>
+                  <small>http://bit.ly/YJUlSA</small>
+                </li>
+                <li>
+                  <a href="http://pouchdb.com/">PouchDB / NoSQL</a>
+                  <br>
+                  <small>http://pouchdb.com/</small>
+                </li>
+                <li>
+                  <a href="https://github.com/mozilla/localForage">localForage</a>
+                  <br>
+                  <small>https://github.com/mozilla/localForage</small>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <aside class="notes">
+            <ul>
+              <li>wrapper libs bring more support</li>
+              <li>use indexeddb, most storage, fallback to web sql, then to localStorage</li>
+              <li>unified simple API across underlying technologies</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section class="full-size dark" data-background="#4681CF">
+          <h2>Thanks! Questions?</h2>
+          <h5>Twitter/Github: @mshwery</h5>
+
+          <small>
+            <ul>
+              <li>
+                <a href="http://www.html5rocks.com/en/features/storage">http://www.html5rocks.com/en/features/storage</a>
+              </li>
+              <li>
+                <a href="http://diveintohtml5.info/storage.html">http://diveintohtml5.info/storage.html</a>
+              </li>
+              <li>
+                <a href="http://www.w3.org/TR/IndexedDB/">http://www.w3.org/TR/IndexedDB/</a>
+              </li>
+              <li>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/API/">https://developer.mozilla.org/en-US/docs/Web/Guide/API/</a>
+              </li>
+              <li>
+                <a href="http://nparashuram.com/IndexedDBShim/">http://nparashuram.com/IndexedDBShim/</a>
+              </li>
+              <li>
+                <a href="https://github.com/mozilla/localForage">https://github.com/mozilla/localForage</a>
+              </li>
+              <li>
+                <a href="https://github.com/pouchdb/pouchdb">https://github.com/pouchdb/pouchdb</a>
+              </li>
+              <li>
+                <a href="http://offlinefirst.org/">http://offlinefirst.org/</a>
+              </li>
+            </ul>
+          </small>
         </section>
 
       </div>
