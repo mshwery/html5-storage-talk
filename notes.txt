@@ -1,0 +1,227 @@
+# Title
+
+
+# Me
+
+- this is me
+
+
+# Work
+
+- Frontend @ Fed
+- Software for Market Research + the Sample industry
+
+
+# Talk Overview
+
+- what are the benefits of web storage?
+- more sophisticated ways to persist data in the browser than in the old days
+- how do we use web storage?
+- and with remote storage?
+
+
+# Why use it
+
+- there are some really good reasons
+
+
+# browser has more responsibility
+
+
+# traditional v modern web sites
+
+- putting more and more into the browser
+- the server is just routing or an API to your data layer
+
+
+# Loading spinner 1
+
+- the ubiquitous loading spinner
+
+
+# No no no gif
+
+- feels like the site doesn't want you to use it
+
+
+# Infinity spinner
+
+- and sometimes it takes forever
+
+
+# No connection page
+
+- we don't always have good service
+
+
+# Retry connection
+
+- our connections drop out and come back in, especially with travel
+
+
+# Why use web storage?
+
+- cache stuff
+- speed up your site
+- transfer less data across the wire
+- don't ask for what you already have
+
+- safety net
+- data redundancy
+- don't lose data when accidents happen
+- browser crash
+- closed window/tab
+- lost connection
+
+- store locally, sync remotely
+
+
+# offline first
+
+- progressive enhancement
+- consider your audience
+- not a sure-fire solution unless you can enforce/expect browser usage
+- if your app works well offline, and syncs up when online, you may prevent a lot of problems
+
+
+# dont treat offline like an error
+
+
+# send button ... send later button
+
+- So, what do you do with that data that's being modified?
+- Store it in the browser until the connection is back?
+- Thankfully we have navigator.onLine
+
+
+# landscape of html storage
+
+
+# landscape of html storage
+
+- grouped under the umbrella phrase "Offline Technologies"
+- tied to the document origin
+
+
+# same origin policy
+
+
+# same origin policy
+
+- document origin is [protcol, host, port]
+- keeps your browsing secure
+- can't access or conflict cross-origin
+- each of the following urls are different document origins
+
+
+# different origins
+
+- these are all different
+
+
+# cookies
+
+- Useful for small, one-off, unique pieces of data
+- especially in legacy browsers
+
+
+# Web sql
+
+- late 2010, w3c dropped the spec in favor of indexedDB
+- IE and Firefox disagreed with implementation
+- tread carefully
+- but still useful as fallback when indexedDB is not supported
+
+
+# can i use websql
+
+
+# biden gif
+
+- browser vendor reactions with websql
+
+
+# code to see if websql is supported
+
+
+# indexed db
+
+- object stores == tables
+
+
+# indexed db
+
+- similar concepts to relational databases/SQL
+- cursors take `range`, `source`, `position`
+- transactions to contain data changes
+
+
+# indexed db
+
+
+# can i use indexed db
+
+
+# code to open a new database
+
+- opens a db
+- creates schema and populates it within `onupgradeneeded`
+- returns the db in the success callback, which here is gets set to `db`
+
+
+# web storage
+
+- super easy API
+
+
+# can i use webstorage?
+
+
+# dancing badger
+
+- yay! we can celebrate because the support is great
+
+
+# it's not all grand
+
+- these are just precautions you'll have to take
+- i made a wrapper library to help
+
+# i made a wrapper library
+
+- handles JSON parsing in/out
+- gives you optional ttl
+- handles quota exceeded errors gracefully
+
+
+# localstorage
+
+- user can clear, just like cookies/history/cache
+- you can clear programmatically as well
+
+
+# sessionStorage
+
+- basically the same except in lifetime and scope
+- gets cleared when that tab/window closes, hence "session" storage
+- can navigate away and then go back and it will still be there
+- not available cross-tab/window
+
+
+# code for using localStorage
+
+
+# code attempting to store an array
+
+
+# code attempting to store an object
+
+
+# code parsing as JSON
+
+
+# the future
+
+- wrapper libs bring more support
+- use indexeddb, most storage, fallback to web sql, then to localStorage
+- unified simple API across underlying technologies
