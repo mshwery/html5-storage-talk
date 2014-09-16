@@ -2,7 +2,11 @@
  * Custom theme for reveal.js.
  * Author: Matt Shwery
  */
-@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700,400italic);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,700);
+/*
+ * Override theme settings (see ../template/settings.scss)
+ */
 .reveal a:not(.image) {
   line-height: 1.3em; }
 
@@ -14,11 +18,11 @@ body {
   background-color: white; }
 
 .reveal {
-  font-family: "Lato", sans-serif;
-  font-size: 36px;
+  font-family: "Roboto", sans-serif;
+  font-size: 34px;
   font-weight: normal;
   letter-spacing: -0.02em;
-  color: #4681cf; }
+  color: #626467; }
 
 ::selection {
   color: white;
@@ -36,10 +40,10 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: #4681cf;
-  font-family: "Lato", sans-serif;
-  line-height: 1.1em;
+  font-family: "Roboto Slab", sans-serif;
+  line-height: 1.25em;
   letter-spacing: normal;
-  text-transform: uppercase;
+  text-transform: normal;
   text-shadow: none; }
 
 .reveal h1 {
@@ -72,7 +76,7 @@ body {
 .reveal section img {
   margin: 15px 0px;
   background: rgba(255, 255, 255, 0.12);
-  border: 4px solid #4681cf;
+  border: 4px solid #626467;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   -webkit-transition: all .2s linear;
   -moz-transition: all .2s linear;
@@ -136,13 +140,6 @@ body {
 .reveal .slide-number {
   color: #4681cf; }
 
-.reveal h1,
-.reveal h2 {
-  font-weight: 200; }
-
-.reveal h3, h4 {
-  font-weight: 300; }
-
 .reveal .dark {
   color: white !important; }
   .reveal .dark h1, .reveal .dark h2, .reveal .dark h3, .reveal .dark h4, .reveal .dark h5, .reveal .dark h6, .reveal .dark p, .reveal .dark span, .reveal .dark a {
@@ -172,3 +169,10 @@ body {
 .reveal section img {
   border: none;
   box-shadow: none; }
+
+.reveal cite {
+  color: #95979a; }
+
+.reveal small {
+  color: #95979a;
+  vertical-align: baseline; }

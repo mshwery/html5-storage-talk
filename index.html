@@ -89,7 +89,10 @@
         </section>
 
         <section class="center">
-          <img src="img/logo-fed.svg"><br/><br/>
+          <img src="img/logo-fed.svg">
+          <br>
+          <br>
+          <br>
           <img src="img/logo-fulcrum-horizontal.svg">
 
           <aside class="notes">
@@ -100,38 +103,45 @@
           </aside>            
         </section>
 
-        <section class="full-size dark" data-background="#4681CF">
+        <section class="full-size">
           <h2>What's this all about?</h2>
           <ul>
-            <li>Learn different ways to persist data on client-side</li>
-            <li>Benefits of Offline-first</li>
-            <li>Current landscape of web storage</li>
-            <li>Handling remote and local data stores</li>
+            <li>Why use web storage?</li>
+            <li>Ways to persist data in the browser</li>
+            <li>What's Offline-first?</li>
+            <li>Strategies for mixing remote and local data</li>
             <li>The future?</li>
           </ul>
 
           <aside class="notes">
             <ul>
-              <li>more sophisticated ways to persist data in the browser</li>
+              <li>more sophisticated ways to persist data in the browser than in the old days</li>
             </ul>
           </aside>
         </section>
 
-        <section class="full-size dark" data-background="#4681CF">
-          <h2>Why web storage?</h2>
+        <section class="center">
+          <h2>Why use web storage?</h2>
+        </section>
+
+        <section class="center">
+          <h3>The browser has more responsibility now than ever before.</h3>
         </section>
 
         <section class="full-size center">
           <img src="img/arc.png">
         </section>
 
-        <section class="full-size" data-background="img/loading1.gif">
+        <section class="full-size center" data-background="img/loading1.gif">
+          <h3>This...</h3>
         </section>
         
-        <section class="full-size" data-background="img/no-no-no.gif">
+        <section class="full-size center dark" data-background="img/no-no-no.gif">
+          <h3>starts to feel like this...</h3>
         </section>
         
-        <section class="full-size" data-background="img/infinity-spinner.gif">
+        <section class="full-size center dark" data-background="img/infinity-spinner.gif">
+          <h3>which starts to feel like forever.</h3>
         </section>
 
         <section class="center">
@@ -142,10 +152,11 @@
           <img src="img/retry-connection.png">
         </section>
 
-        <section class="full-size dark" data-background="#4681CF">
-          <h2>Why web storage?</h2>
+        <section class="full-size">
+          <h2>Why use web storage?</h2>
           <ul>
             <li>Performance</li>
+            <li>Your app is in the browser</li>
             <li>Store client-specific data</li>
             <li>Make it work offline</li>
           </ul>
@@ -187,24 +198,53 @@
             </li>
             <li>Caching gives you speed</li>
             <li>Disconnections aren't a problem</li>
-            <li>Don't treat offline like an error</li>
             <li>It just works&#0153;</li>
           </ul>
 
           <aside class="notes">
             <ul>
               <li>progressive enhancement</li>
+              <li>consider your audience</li>
               <li>not a sure-fire solution unless you can enforce/expect browser usage</li>
-              <li></li>
+              <li>if your app works well offline, and syncs up when online, you may prevent a lot of problems</li>
             </ul>
           </aside>
         </section>
 
-        <section class="full-size dark" data-background="#4681CF">
-          <h2>What's the current landscape?</h2>
+        <section class="center">
+          <h3>Don't treat offline like an error.</h3>
+        </section>
+
+        <section class="center">
+          <h3>
+            Imagine a <i>“send”</i> button
+            <br> that knows when to turn into a 
+            <br><i>“send later, when online”</i> button.
+          </h3>
+          <cite>– <a href="http://alistapart.com/article/offline-first" style="color: currentColor">Alex Feyerke</a> –</cite>
+
+          <aside class="notes">
+            <p>
+              So, what do you do with that data that's being modified?
+            </p>
+            <p>
+              Store it in the browser until the connection is back?
+            </p>
+            <p>
+              Thankfully we have navigator.onLine
+            </p>
+          </aside>
+        </section>
+
+        <section class="center" data-background="img/mountains.jpg">
+          <h1>The landscape of web storage</h1>
+        </section>
+
+        <section class="full-size">
+          <h3>The landscape of web storage</h3>
           <ul>
             <li>Cookies</li>
-            <li>Web SQL (deprecated)</li>
+            <li style="color: #aaa">Web SQL (deprecated)</li>
             <li>IndexedDB</li>
             <li>
               Web Storage
@@ -223,8 +263,11 @@
           </aside>
         </section>
 
+        <section class="center">
+          <h3>All web storage is bound by the <br>Same-Origin Policy</h3>
+        </section>
+
         <section class="full-size center">
-          <img src="img/document-origin.svg"><br/>
           <img src="img/different-origins.svg">
 
           <aside class="notes">
@@ -236,35 +279,42 @@
           </aside>
         </section>
 
-        <section class="full-size cookies">
-          <img src="img/cookie-monster.gif">
-          <h3>Cookies</h3>  
-          <ul>
-            <li>Works everywhere</li>
-            <li>
-              Limited storage
-              <br/>
-              <small>4kb per cookie, reliably up to 128kb in total cookies per domain</small>
-            </li>
-            <li>Useful for small, one-off, unique pieces of data</li>
-            <li>sent with every http request :(</li>
-          </ul>          
+        <section class="full-size center">
+          <img src="img/different-origins2.svg">
         </section>
 
-        <section class="full-size dark" data-background="#4681CF">
+        <section class="full-size cookies">
+          <img src="img/cookie-monster.png">
+          <h3>Cookies</h3>  
+          <ul>
+            <li>key/value pairs</li>
+            <li>Old, but cross-browser</li>
+            <li>
+              4kb limit per cookie
+              <br/>
+              <small>reliably up to 128kb in total cookies per domain</small>
+            </li>
+            <li>Sent with every http request :(</li>
+          </ul>
+
+          <aside class="notes">
+            <p>
+              Useful for small, one-off, unique pieces of data
+            </p>
+          </aside>       
+        </section>
+
+        <section class="full-size">
           <h3>Web SQL (deprecated)</h3>
           <ul>
-            <li>brings SQL to the browser</li>
-            <li>wide mobile support</li>
+            <li>Relational DB – SQLite syntax</li>
+            <li>5mb - 700mb size limit</li>
             <li>
-              <code>"openDatabase" in window</code>
-            </li>
-            <li>
-              lack of consensus
+              lack of consensus, so deprecated
               <br>
-              <small>missing in IE and Firefox</small>
+              <small>missing support in IE and Firefox</small>
             </li>
-            <li>still useful as fallback when indexedDB isn't supported</li>
+            <li>still supported in Chrome, Safari, Opera, iOS Safari, Android Browser</li>
           </ul>
 
           <aside class="notes">
@@ -272,6 +322,7 @@
               <li>late 2010, w3c dropped the spec in favor of indexedDB</li>
               <li>IE and Firefox disagreed with implementation</li>
               <li>tread carefully</li>
+              <li>but still useful as fallback when indexedDB is not supported</li>
             </ul>
           </aside>
         </section>
@@ -280,13 +331,18 @@
           <img src="img/can-i-use-web-sql.jpg">
         </section>
 
-        <section class="full-size dark" data-background="#4681CF">
+        <section class="center">
+          <pre><code>"openDatabase" in window</code></pre>
+        </section>
+
+        <section class="full-size">
           <h3>IndexedDB</h3>
           <ul>
+            <li>NoSQL</li>
             <li>high performance search on records</li>
             <li>uses "Object Stores"</li>
             <li>
-              size limits
+              10mb - ? size limit
               <br/>
               <small>
                 <ul>
@@ -305,7 +361,7 @@
           </aside>
         </section>
 
-        <section class="full-size dark" data-background="#4681CF">
+        <section class="full-size">
           <h3>IndexedDB</h3>
           <ul>
             <li>databases with records with fields with a specific datatype defined upon creation</li>
@@ -324,19 +380,20 @@
 
           <aside class="notes">
             <ul>
+              <li>similar concepts to relational databases/SQL</li>
               <li>cursors take `range`, `source`, `position`</li>
             </ul>
           </aside>
         </section>
 
-        <section class="full-size dark" data-background="#4681CF">
+        <section class="full-size">
           <h3>IndexedDB</h3>
           <ul>
             <li>
-              modern browser support (limited)
+              Edge/modern browser support
               <ul>
-                <li>Safari/iOS Safari only 8+</li>
-                <li>sucks for mobile</li>
+                <li>Safari/iOS Safari 8+</li>
+                <li>Mobile support spotty</li>
               </ul>
             </li>
             <li>
@@ -374,7 +431,7 @@ request.onsuccess = function() {
         <section class="full-size dark" data-background="#4681CF">
           <h3>Web Storage</h3>
           <ul>
-            <li>persistent key/value pairs</li>
+            <li>key/value pairs</li>
             <li>wide browser support</li>
             <li>easiest to use</li>
             <li>two flavors: localStorage & sessionStorage</li>
